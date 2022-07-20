@@ -37,6 +37,14 @@
                (into final-body-parts
                      (set [part (matching-part part)])))))))
 
+(defn symmetrize-body-parts-with-reduce
+  [asym-body-parts]
+  (reduce (fn [final-body-parts part]
+            (into final-body-parts (set [part (matching-part part)])))
+          []
+          asym-body-parts)
+  )
+
 (defn -main
   [& args]
-  (println (symmetrize-body-parts asym-body-parts)))
+  (println (= (symmetrize-body-parts asym-body-parts) (symmetrize-body-parts-with-reduce asym-body-parts))))
