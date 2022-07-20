@@ -45,6 +45,23 @@
           asym-body-parts)
   )
 
+(defn hit
+  [asym-body-parts target]
+  (let [sym-parts (symmetrize-body-parts-with-reduce asym-body-parts)]
+    (loop [[part & remaining] sym-parts
+           accumulated-size (:size part)]
+      (if (empty? remaining)
+        {:error "out-of-bounds"}
+        (if (> accumulated-size target)
+          part
+          (recur remaining (+ accumulated-size (:size (first remaining))))
+          )
+        )
+      )
+    )
+  )
+
+
 (defn -main
   [& args]
   (println (= (symmetrize-body-parts asym-body-parts) (symmetrize-body-parts-with-reduce asym-body-parts))))
