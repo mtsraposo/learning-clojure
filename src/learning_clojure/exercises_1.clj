@@ -5,3 +5,6 @@
   [num]
   (+ num 100))
 
+(defn dec-maker
+  [dec-by]
+  #(- % dec-by))

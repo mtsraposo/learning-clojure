@@ -10,3 +10,11 @@
         )
     )
   )
+
+(deftest dec-maker-test
+  (testing "Return a decrement function"
+    (is (=
+          ((dec-maker 9) 10)
+          1))
+    )
+  )
