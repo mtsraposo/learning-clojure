@@ -8,3 +8,7 @@
 (defn dec-maker
   [dec-by]
   #(- % dec-by))
+
+(defn mapset
+  [fun nums]
+  (set (map fun nums)))

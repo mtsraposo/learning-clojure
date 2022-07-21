@@ -18,3 +18,12 @@
           1))
     )
   )
+
+(deftest mapset-test
+  (testing "Map a function to a vector and return a set"
+    (is (=
+          (mapset inc [1 1 2 2])
+          #{2 3})
+        )
+    )
+  )
